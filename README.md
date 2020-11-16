@@ -1,7 +1,6 @@
-# actioncable-client-kotlin (Updated)
+# actioncable-client-kotlin
 
-[![Build Status](https://travis-ci.org/raquezha/actioncable-client-kotlin.svg?branch=0.0.10-beta)](https://travis-ci.org/raquezha/actioncable-client-kotlin)
-[![Release](https://jitpack.io/v/raquezha/actioncable-client-kotlin.svg)](https://jitpack.io/#raquezha/actioncable-client-kotlin)
+[![](https://jitpack.io/v/DNights/actioncable-client-kotlin.svg)](https://jitpack.io/#DNights/actioncable-client-kotlin)
 
 # Note
 I decided to fork this repo because hosopy is not updating his project anymore. If you want can use this forked version you can read the instructions below.
@@ -25,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.raquezha:actioncable-client-kotlin:0.0.10-beta'
+    implementation 'com.github.DNights:actioncable-client-kotlin:0.0.10'
 }
 ```
 
