@@ -10,6 +10,7 @@ internal data class Message(val type: Type, val identifier: String?, val body: A
 		PING("ping"),
 		CONFIRMATION("confirm_subscription"),
 		REJECTION("reject_subscription"),
+		DISCONNECT("disconnect"),
 		MESSAGE(null);
 	}
 	
