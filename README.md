@@ -1,6 +1,6 @@
 # actioncable-client-kotlin
 
-[![](https://jitpack.io/v/DNights/actioncable-client-kotlin.svg)](https://jitpack.io/#DNights/actioncable-client-kotlin)
+[![](https://jitpack.io/v/dealicious-inc/actioncable-client-kotlin.svg)](https://jitpack.io/#dealicious-inc/actioncable-client-kotlin)
 
 # Note
 I decided to fork this repo because hosopy is not updating his project anymore. If you want can use this forked version you can read the instructions below.
@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.DNights:actioncable-client-kotlin:0.0.10'
+    implementation 'com.github.dealicious-inc:actioncable-client-kotlin:0.0.12'
 }
 ```
 
