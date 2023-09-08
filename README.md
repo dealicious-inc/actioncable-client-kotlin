@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.dealicious-inc:actioncable-client-kotlin:0.0.13'
+    implementation 'com.github.dealicious-inc:actioncable-client-kotlin:0.0.21'
 }
 ```
 
