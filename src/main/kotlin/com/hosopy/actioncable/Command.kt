@@ -11,15 +11,25 @@ internal data class Command(private val command: String, private val identifier:
         fun message(identifier: String, data: Map<String, Any?>) = Command("message", identifier, data)
     }
 
-    fun toJsonString(): String {
+    fun toJsonStr(): String {
         return if (data.isEmpty()) {
             json {
                 obj("command" to command, "identifier" to identifier)
-            }.toJsonString()
+            }.let {
+                StringBuilder().apply { it.appendJsonString(this,
+                    prettyPrint = false,
+                    canonical = false
+                ) }.toString()
+            }
         } else {
             json {
                 obj("command" to command, "identifier" to identifier, "data" to JsonObject(data).toJsonString())
-            }.toJsonString()
+            }.let {
+                StringBuilder().apply { it.appendJsonString(this,
+                    prettyPrint = false,
+                    canonical = false
+                ) }.toString()
+            }
         }
     }
 }
