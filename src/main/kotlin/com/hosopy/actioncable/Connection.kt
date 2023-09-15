@@ -158,6 +158,8 @@ class Connection internal constructor(private val uri: URI, private val options:
                 webSocket.sendMessage(RequestBody.create(WebSocket.TEXT, data))
             } catch (e: IOException) {
                 fireOnFailure(e)
+            } catch (e: IllegalStateException) {
+                fireOnFailure(e)
             }
         }
     }
