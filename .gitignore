@@ -25,3 +25,5 @@ workspace.xml
 build/
 !**/src/**/build
 !**/test/**/build
+
+local.properties
