@@ -46,7 +46,8 @@ class Subscription internal constructor(private val consumer: Consumer, channel:
      * @param action Procedure name to perform
      * @param params Parameters passed to procedure
      */
-    @OptIn(ObsoleteCoroutinesApi::class)
+
+    @ObsoleteCoroutinesApi
     fun perform(action: String, params: Map<String, Any?> = mapOf()) {
         require(!params.containsKey("action")) { "action is reserved key" }
         val data = params.toMutableMap()

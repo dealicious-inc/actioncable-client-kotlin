@@ -1,5 +1,7 @@
 package com.hosopy.actioncable
 
+import kotlinx.coroutines.ObsoleteCoroutinesApi
+
 /**
  * Collection class for creating (and internally managing) channel subscriptions.
  *
@@ -30,6 +32,7 @@ class Subscriptions internal constructor(private val consumer: Consumer) {
      *
      * @param subscription instance to remove
      */
+    @ObsoleteCoroutinesApi
     fun remove(subscription: Subscription) {
         if (subscriptions.remove(subscription)) {
             consumer.send(Command.unsubscribe(subscription.identifier))
@@ -38,6 +41,7 @@ class Subscriptions internal constructor(private val consumer: Consumer) {
 
     fun contains(subscription: Subscription) = subscriptions.contains(subscription)
 
+    @ObsoleteCoroutinesApi
     internal fun reload() {
         subscriptions.forEach { sendSubscribeCommand(it) }
     }
@@ -64,6 +68,7 @@ class Subscriptions internal constructor(private val consumer: Consumer) {
         removal.forEach { it.notifyRejected() }
     }
 
+    @ObsoleteCoroutinesApi
     private fun sendSubscribeCommand(subscription: Subscription) {
         consumer.send(Command.subscribe(subscription.identifier))
     }
