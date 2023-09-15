@@ -88,5 +88,5 @@ class Consumer internal constructor(uri: URI, options: Options = Options()) {
     }
 
     @ObsoleteCoroutinesApi
-    internal fun send(command: Command) = connection.send(command.toJsonStr())
+    internal fun send(command: Command) = connection.send(command.toJsonString())
 }
