@@ -44,6 +44,7 @@ class Consumer internal constructor(uri: URI, options: Options = Options()) {
         }
 
         connection.onMessage = { jsonString ->
+            println("ActionCable Consumer jsonString = $jsonString")
             Message.createFromJsonString(jsonString)?.let {
                 (type, identifier, body) ->
                 when (type) {
