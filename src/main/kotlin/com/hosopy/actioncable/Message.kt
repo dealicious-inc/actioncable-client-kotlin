@@ -23,7 +23,10 @@ internal data class Message(val type: Type, val identifier: String?, val body: A
 					Type.values().first { it.typeString == typeString }
 				} ?: Type.MESSAGE
 				val identifier = json.string("identifier")
-				val body = json["message"]
+				val body = if (type == Type.DISCONNECT)
+					json["reason"]
+				else
+					json["message"]
 				
 				Message(type, identifier, body)
 			}

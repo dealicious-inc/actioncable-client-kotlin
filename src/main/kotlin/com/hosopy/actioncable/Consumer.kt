@@ -1,6 +1,8 @@
 package com.hosopy.actioncable
 
 import kotlinx.coroutines.ObsoleteCoroutinesApi
+import java.lang.Exception
+import java.net.SocketException
 import java.net.URI
 
 /**
@@ -40,7 +42,7 @@ class Consumer internal constructor(uri: URI, options: Options = Options()) {
 
     init {
         connection.onOpen = {
-        
+
         }
 
         connection.onMessage = { jsonString ->
@@ -56,7 +58,7 @@ class Consumer internal constructor(uri: URI, options: Options = Options()) {
                     Message.Type.CONFIRMATION -> subscriptions.notifyConnected(identifier!!)
                     Message.Type.REJECTION -> subscriptions.reject(identifier!!)
                     Message.Type.MESSAGE -> subscriptions.notifyReceived(identifier!!, body)
-                    Message.Type.DISCONNECT -> {}
+                    Message.Type.DISCONNECT -> subscriptions.notifyFailed(Exception("Disconnected reason: $body", Throwable(message = body.toString())))
                 }
             }
         }
