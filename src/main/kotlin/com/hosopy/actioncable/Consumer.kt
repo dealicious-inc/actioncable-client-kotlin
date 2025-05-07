@@ -19,7 +19,7 @@ import java.net.URI
  * ```
  */
 @ObsoleteCoroutinesApi
-class Consumer internal constructor(uri: URI, options: Options = Options()) {
+class Consumer internal constructor(uri: URI, options: Options = Options(), printLog: Boolean = false) {
     /**
      * Consumer options.
      *
@@ -46,7 +46,9 @@ class Consumer internal constructor(uri: URI, options: Options = Options()) {
         }
 
         connection.onMessage = { jsonString ->
-            println("ActionCable Consumer jsonString = $jsonString")
+            if(printLog) {
+                println("ActionCable Consumer jsonString = $jsonString")
+            }
             Message.createFromJsonString(jsonString)?.let {
                 (type, identifier, body) ->
                 when (type) {

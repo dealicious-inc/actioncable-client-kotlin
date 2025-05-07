@@ -18,7 +18,7 @@ object ActionCable {
      * val consumer = ActionCable.createConsumer(uri, options)
      * ```
      */
-    fun createConsumer(uri: URI, options: Consumer.Options = Consumer.Options()): Consumer {
-        return Consumer(uri, options)
+    fun createConsumer(uri: URI, options: Consumer.Options = Consumer.Options(), printLog: Boolean = false): Consumer {
+        return Consumer(uri = uri, options = options, printLog = printLog)
     }
 }
