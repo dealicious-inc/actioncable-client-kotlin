@@ -1,6 +1,7 @@
 package com.hosopy.actioncable
 
 import kotlinx.coroutines.ObsoleteCoroutinesApi
+import java.util.Collections
 
 /**
  * Collection class for creating (and internally managing) channel subscriptions.
@@ -15,7 +16,7 @@ import kotlinx.coroutines.ObsoleteCoroutinesApi
  */
 class Subscriptions internal constructor(private val consumer: Consumer) {
 
-    private val subscriptions = mutableListOf<Subscription>()
+    private val subscriptions = Collections.synchronizedList(mutableListOf<Subscription>())
 
     /**
      * Create [Subscription] instance.
@@ -43,7 +44,7 @@ class Subscriptions internal constructor(private val consumer: Consumer) {
 
     @ObsoleteCoroutinesApi
     internal fun reload() {
-        subscriptions.forEach { sendSubscribeCommand(it) }
+        subscriptions.filterNotNull().forEach { sendSubscribeCommand(it) }
     }
 
     internal fun notifyConnected(identifier: String) {
